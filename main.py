@@ -23,9 +23,13 @@ if __name__ == '__main__':
     output = point_to_line(point_a, point_b, decimal_point)
     if args.save_to_file:
         if os.path.isfile('point_to_file.csv'):
-            with open('point_to_file.csv', 'a+') as f:
-                f.write(f"\n{point_a}, {point_b}, {decimal_point}, {output}")
-        else:
             with open('point_to_file.csv', 'a') as f:
-                f.write("point_a, point_b, decimal_point, line_output\n")
-                f.write(f"{point_a}, {point_b}, {decimal_point}, {output}")
+                f.write(
+                    f"\n{point_a[0]},{point_a[1]},{point_b[0]}, {point_b[1]}, "
+                    f"{decimal_point}, {output}")
+        else:
+            with open('point_to_file.csv', 'w') as f:
+                f.write("X1, Y1, X2, Y2, decimal_point, line_output\n")
+                f.write(
+                    f"{point_a[0]},{point_a[1]},{point_b[0]}, {point_b[1]}, "
+                    f"{decimal_point}, {output}")
