@@ -11,7 +11,8 @@ parser.add_argument('-d', '--decimal_points', default=3, type=int,
                     help='Specifies the number of decimal points in output. '
                          'default value is 3.')
 parser.add_argument('-s', '--save_to_file', default=False, type=bool,
-                    help='Should be numerical values of type int / float.')
+                    help='accpets: True/ False, if True: '
+                         'Will write to csv file')
 args = parser.parse_args()
 
 if __name__ == '__main__':
@@ -28,4 +29,3 @@ if __name__ == '__main__':
             with open('point_to_file.csv', 'a') as f:
                 f.write("point_a, point_b, decimal_point, line_output\n")
                 f.write(f"{point_a}, {point_b}, {decimal_point}, {output}")
-
