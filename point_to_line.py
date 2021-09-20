@@ -1,14 +1,45 @@
+"""Point to Line function
+
+This script allows the user to input two different points in Cartesian
+coordinates and output the line which includes the input points
+in the form of: Ax + By = C
+
+    Functions in this file:
+    -----------------------
+    * point_to_line
+"""
+
 import math
 import bcolors
 
 
 def point_to_line(point_a: list, point_b: list, decimal_point=3) -> (str, str):
+    """Gets two points and outputs the line in the format: Ax+By = C
+
+    Parameters
+    ----------
+    point_a : list
+        [x,y] is the expected input to the function for the first point.
+    point_b : list
+        [x,y] is expected input to the function for the second point.
+    decimal_point: int
+        This gives you the freedom to output with the number of decimal points desired.
+
+
+
+    Returns
+    -------
+    String, String
+        First output is the output. If error detected, returns None.
+        Second output is the error, if detected. else, returns None.
+    """
     try:
         assert isinstance(point_a, list) and len(point_a) == 2
         assert isinstance(point_b, list) and len(point_b) == 2
         assert isinstance(decimal_point, int) and decimal_point >= 0
     except AssertionError:
-        print(f"{bcolors.FAIL}*********** Error Detected ***********{bcolors.ENDC}")
+        print(
+            f"{bcolors.FAIL}*********** Error Detected ***********{bcolors.ENDC}")
         print("Input types Error!")
         return None, "Input types Error!"
     try:
