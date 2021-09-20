@@ -1,3 +1,4 @@
+import argparse
 import os
 import bcolors
 from point_to_line import point_to_line
@@ -27,26 +28,32 @@ parser.add_argument(
     "default value is 3.",
 )
 parser.add_argument(
-    "-s",
-    "--save_to_file",
-    default=True,
-    type=bool,
-    help="accpets: Boolean, if True: " "Will write to csv file",
+    "--save_to_csv",
+    dest="save",
+    action="store_true",
+    help="If used, will save the results into a CSV file. True by default.",
 )
+parser.add_argument(
+    "--no_save",
+    dest="save",
+    action="store_false",
+    help="Will not save the results to CSV. False by default.",
+)
+parser.set_defaults(save=True)
 args = parser.parse_args()
 
 if __name__ == "__main__":
     point_a = args.point_a
     point_b = args.point_b
     decimal_point = args.decimal_points
-
+    save_to_file = args.save
     output, Error = point_to_line(point_a, point_b, decimal_point)
 
     if output is not None:
         print(f"{bcolors.BOLD}*********** OUTPUT ***********{bcolors.ENDC}")
         print(f"{bcolors.BITALIC}{output}{bcolors.ENDC}")
 
-    if args.save_to_file:
+    if args.save:
         print("*********** Saving output to CSV file ***********")
         if os.path.isfile("point_to_file.csv"):
             with open("point_to_file.csv", "a", encoding="utf-8") as f:
