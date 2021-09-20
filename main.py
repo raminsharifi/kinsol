@@ -1,4 +1,3 @@
-import argparse
 import os
 import bcolors
 from point_to_line import point_to_line
