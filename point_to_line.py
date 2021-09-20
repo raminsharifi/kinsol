@@ -32,7 +32,6 @@ def point_to_line(point_a: list, point_b: list, decimal_point=3) -> (str, str):
     except ValueError as err:
         print(f"{bcolors.FAIL}******** Error Detected ********{bcolors.ENDC}")
         print("Please input two different points!")
-        print(f"Your error is: {err}!")
         return None, "Please input two different points!"
 
     else:

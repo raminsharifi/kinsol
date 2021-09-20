@@ -1,0 +1,2 @@
+X1, Y1, X2, Y2, decimal_point, line_output, Error
+1.0,1.0,1.0, 1.0, 3, None, Please input two different points!
