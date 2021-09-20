@@ -4,8 +4,8 @@
 This is the runner file.
     Parameters
     ----------
-    -a, --point_a: list
-    -b, --point_b: list
+    -a, --point_a: list, inputs seperated by space. like: -a 2 5 --> a = [2, 5]
+    -b, --point_b: list, inputs seperated by space. like: -b 2 5 --> b = [2, 5]
     -d, --decimal_points: int. The default for this is 3.
     --save_to_csv, flag, which runs by default.
     --no_save, flag, for not saving the output to a CSV file.
