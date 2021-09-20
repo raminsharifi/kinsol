@@ -9,14 +9,14 @@ parser.add_argument(
     "--point_a",
     nargs=2,
     type=float,
-    help="Should be numerical two values of type int / float. Seperated by space.",
+    help="Should be two values of type int/float. Seperated by space.",
 )
 parser.add_argument(
     "-b",
     "--point_b",
     nargs=2,
     type=float,
-    help="Should be numerical two values of type int / float. Seperated by space",
+    help="Should be two values of type int/float. Seperated by space.",
 )
 parser.add_argument(
     "-d",
