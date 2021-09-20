@@ -5,16 +5,17 @@ import bcolors
 
 parser = argparse.ArgumentParser(description='Process some integers.')
 parser.add_argument('-a', '--point_a', nargs=2, type=float,
-                    help='Should be numerical values of type int / float.'
+                    help='Should be numerical two values of type int / float.'
                          ' Seperated by space.')
 parser.add_argument('-b', '--point_b', nargs=2, type=float,
-                    help='Should be numerical values of type int / float. '
+                    help='Should be numerical two values of type int / float. '
                          ' Seperated by space')
 parser.add_argument('-d', '--decimal_points', default=3, type=int,
                     help='Specifies the number of decimal points in output. '
+                         'Should be greater or equal to zero.'
                          'default value is 3.')
-parser.add_argument('-s', '--save_to_file', default=False, type=bool,
-                    help='accpets: True/ False, if True: '
+parser.add_argument('-s', '--save_to_file', default=True, type=bool,
+                    help='accpets: Boolean, if True: '
                          'Will write to csv file')
 args = parser.parse_args()
 
