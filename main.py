@@ -1,3 +1,22 @@
+# -*- coding: utf-8 -*-
+"""Runner for point_to_line function
+
+This is the runner file.
+    Parameters
+    ----------
+    -a, --point_a: list
+    -b, --point_b: list
+    -d, --decimal_points: int. The default for this is 3.
+    --save_to_csv, flag, which runs by default.
+    --no_save, flag, for not saving the output to a CSV file.
+
+
+    usage example
+    --------------
+    python main.py -a 1 1 -b 1.2 3.4 -d 5 --save_to_csv
+
+"""
+
 import argparse
 import os
 import bcolors
@@ -43,18 +62,26 @@ parser.set_defaults(save=True)
 args = parser.parse_args()
 
 if __name__ == "__main__":
+    # Saving the input to local variables.
     point_a = args.point_a
     point_b = args.point_b
     decimal_point = args.decimal_points
     save_to_file = args.save
+
+    # Runs the function.
     output, Error = point_to_line(point_a, point_b, decimal_point)
 
+    # runs when there is no error detected.
     if output is not None:
+        # runs when there is no error detected.
         print(f"{bcolors.BOLD}*********** OUTPUT ***********{bcolors.ENDC}")
         print(f"{bcolors.BITALIC}{output}{bcolors.ENDC}")
 
+    # Checks to see if the output/error needs to be saved.
     if args.save:
         print("*********** Saving output to CSV file ***********")
+
+        # Checks to see if there is a file existing and writes to it.
         if os.path.isfile("point_to_file.csv"):
             with open("point_to_file.csv", "a", encoding="utf-8") as f:
                 f.write(
@@ -62,6 +89,7 @@ if __name__ == "__main__":
                     f"{decimal_point}, {output}, {Error}"
                 )
         else:
+            # Runs when there is no existing file existing.
             with open("point_to_file.csv", "w", encoding="utf-8") as f:
                 f.write("X1, Y1, X2, Y2, decimal_point, line_output, Error\n")
                 f.write(

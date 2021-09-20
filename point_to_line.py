@@ -34,22 +34,23 @@ def point_to_line(point_a: list, point_b: list, decimal_point=3) -> (str, str):
         Second output is the error, if detected. else, returns None.
     """
     try:
+        # Checks the inputs to if they are as expected
         assert isinstance(point_a, list) and len(point_a) == 2
         assert isinstance(point_b, list) and len(point_b) == 2
         assert isinstance(decimal_point, int) and decimal_point >= 0
     except AssertionError:
-        print(
-            f"{bcolors.FAIL}*********** Error Detected ***********{bcolors.ENDC}")
+        print(f"{bcolors.FAIL}*********** Error Detected ***********{bcolors.ENDC}")
         print("Input types Error!")
         return None, "Input types Error!"
     try:
+        # Computing A, B, C according to the input.
         var_a = point_a[1] - point_b[1]
         var_b = point_b[0] - point_a[0]
         var_c = var_b * point_a[1] + var_a * point_a[0]
         assert math.isinf(var_a) is not True and math.isinf(var_b) is not True
         if var_a == 0 and var_b == 0:
             raise ValueError
-
+        # Handling different Error Scenarios and return None as output.
     except TypeError as err:
         print(f"{bcolors.FAIL}******** Error Detected ********{bcolors.ENDC}")
         print("Make sure your inputs are numerical!")
@@ -66,6 +67,8 @@ def point_to_line(point_a: list, point_b: list, decimal_point=3) -> (str, str):
         return None, "Please input two different points!"
 
     else:
+        # output different strings based on different A, B.
+        # Error would be returned as None
         if var_a == 0:
             outline = (
                 f"{var_b:.{decimal_point}f} * Y "
