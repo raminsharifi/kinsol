@@ -23,6 +23,15 @@ python main.py --point_a 1 1 --point_b 2 2 --decimal_point 3 --no_save
 
 ## pytest
 
-The `PointToLine` class has been unit tested with pytest in different scenarios. The
-Unit tests are also, included in this repository in the file
+The `PointToLine` class has been unit tested with pytest in different
+scenarios. The Unit tests are also, included in this repository in the file
 named: `test_point_to_line.py`.
+
+## Save To CSV function
+
+If you decide to save your results in a csv file, you can add `--save_to_csv`,
+when you are running your calculations using `main.py`.
+> Please note that the results are saved by default.
+
+If you don't want to save your results, you can use `--no_save` when running
+`main.py`.
