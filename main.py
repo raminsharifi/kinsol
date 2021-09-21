@@ -64,26 +64,9 @@ def arguments():
     return parser.parse_args()
 
 
-if __name__ == "__main__":
-    # Saving the input to local variables.
-    args = arguments()
-    point_a = args.point_a
-    point_b = args.point_b
-    decimal_point = args.decimal_points
-    save_to_file = args.save
-
-    # Runs the function.
-    my_point_to_line = PointToLine(point_a, point_b, decimal_point)
-    output, Error = my_point_to_line.solve()
-
-    # runs when there is no error detected.
-    if output is not None:
-        # runs when there is no error detected.
-        print(f"{bcolors.BOLD}*********** OUTPUT ***********{bcolors.ENDC}")
-        print(f"{bcolors.BITALIC}{output}{bcolors.ENDC}")
-
+def save(saveFlag: bool):
     # Checks to see if the output/error needs to be saved.
-    if args.save:
+    if saveFlag:
         print("*********** Saving output to CSV file ***********")
 
         # Checks to see if there is a file existing and writes to it.
@@ -104,3 +87,24 @@ if __name__ == "__main__":
         print(" Results saved to 'point_to_file.csv'")
 
     print(f"{bcolors.OKMSG}*********** Done! ***********{bcolors.ENDC}")
+
+
+if __name__ == "__main__":
+    # Saving the input to local variables.
+    args = arguments()
+    point_a = args.point_a
+    point_b = args.point_b
+    decimal_point = args.decimal_points
+    save_to_file = args.save
+
+    # Runs the function.
+    my_point_to_line = PointToLine(point_a, point_b, decimal_point)
+    output, Error = my_point_to_line.solve()
+
+    # runs when there is no error detected.
+    if output is not None:
+        # runs when there is no error detected.
+        print(f"{bcolors.BOLD}*********** OUTPUT ***********{bcolors.ENDC}")
+        print(f"{bcolors.BITALIC}{output}{bcolors.ENDC}")
+
+    save(args.save)
