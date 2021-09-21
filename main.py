@@ -24,6 +24,9 @@ from point_line import PointToLine
 
 
 def arguments():
+    """
+    parses the inputs arguments
+    """
     parser = argparse.ArgumentParser(description="Process some integers.")
     parser.add_argument(
         "-a",
@@ -45,8 +48,8 @@ def arguments():
         default=3,
         type=int,
         help="Specifies the number of decimal points in output. "
-             "Should be greater or equal to zero."
-             "default value is 3.",
+        "Should be greater or equal to zero."
+        "default value is 3.",
     )
     parser.add_argument(
         "--save_to_csv",
@@ -64,9 +67,13 @@ def arguments():
     return parser.parse_args()
 
 
-def save(saveFlag: bool):
+def save(save_flag: bool):
+    """
+    will save the results in CSV file.
+    return: Void
+    """
     # Checks to see if the output/error needs to be saved.
-    if saveFlag:
+    if save_flag:
         print("*********** Saving output to CSV file ***********")
 
         # Checks to see if there is a file existing and writes to it.

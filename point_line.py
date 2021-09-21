@@ -38,8 +38,9 @@ class PointToLine:
         if can_solve:
             self.__var_a = self.point_a[1] - self.point_b[1]
             self.__var_b = self.point_b[0] - self.point_a[0]
-            self.__var_c = self.__var_b * self.point_a[1] + self.__var_a * \
-                           self.point_a[0]
+            self.__var_c = (
+                self.__var_b * self.point_a[1] + self.__var_a * self.point_a[0]
+            )
         else:
             return None, self.__error
         # check to see the calculations are right.
@@ -62,23 +63,23 @@ class PointToLine:
         """
         try:
             # Checks the inputs to if they are as expected
-            assert isinstance(self.point_a, list) and len(
-                self.point_a) == 2
-            assert isinstance(self.point_b, list) and len(
-                self.point_b) == 2
+            assert isinstance(self.point_a, list) and len(self.point_a) == 2
+            assert isinstance(self.point_b, list) and len(self.point_b) == 2
             assert isinstance(self.point_a[0], int) or isinstance(
-                self.point_a[0], float)
+                self.point_a[0], float
+            )
             assert isinstance(self.point_a[1], int) or isinstance(
-                self.point_a[1], float)
+                self.point_a[1], float
+            )
             assert isinstance(self.point_b[0], int) or isinstance(
-                self.point_b[0], float)
+                self.point_b[0], float
+            )
             assert isinstance(self.point_b[1], int) or isinstance(
-                self.point_b[1], float)
-            assert isinstance(self.decimal_point,
-                              int) and self.decimal_point >= 0
+                self.point_b[1], float
+            )
+            assert isinstance(self.decimal_point, int) and self.decimal_point >= 0
         except AssertionError:
-            print(
-                f"{bcolors.FAIL}*********** Error Detected ***********{bcolors.ENDC}")
+            print(f"{bcolors.FAIL}*********** Error Detected ***********{bcolors.ENDC}")
             print("Input types Error!")
             self.__error = "Input types Error!"
             return False
@@ -94,20 +95,20 @@ class PointToLine:
         True: When no error is detected. otherwise, False.
         """
         try:
-            assert math.isinf(self.__var_a) is not True and math.isinf(
-                self.__var_b) is not True
+            assert (
+                math.isinf(self.__var_a) is not True
+                and math.isinf(self.__var_b) is not True
+            )
             if self.__var_a == 0 and self.__var_b == 0:
                 raise ValueError
         except AssertionError as err:
-            print(
-                f"{bcolors.FAIL}******** Error Detected ********{bcolors.ENDC}")
+            print(f"{bcolors.FAIL}******** Error Detected ********{bcolors.ENDC}")
             print("Yours inputs for should be less than Infinity!")
             print(f"Your error is: {err}!")
             self.__error = "Yours inputs for should be less than Infinity!"
             return False
         except ValueError:
-            print(
-                f"{bcolors.FAIL}******** Error Detected ********{bcolors.ENDC}")
+            print(f"{bcolors.FAIL}******** Error Detected ********{bcolors.ENDC}")
             print("Please input two different points!")
             self.__error = "Please input two different points!"
             return False
