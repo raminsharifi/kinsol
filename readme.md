@@ -2,6 +2,7 @@
 
 This python program will get two distinct input and outputs the line which
 passes through these points. The points should be in *Cartesian* coordinates.
+The output will be a string in the following format: `A * X + B * Y = C`
 
 ## How to run this code:
 
