@@ -70,6 +70,10 @@ def test_PointToLine_input_type():
         None,
         "Input types Error!",
     )
+    assert PointToLine([1234.232, 1000], [10, " "]).solve() == (
+        None,
+        "Input types Error!",
+    )
 
 
 @pytest.mark.error

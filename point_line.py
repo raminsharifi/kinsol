@@ -6,10 +6,11 @@ in the form of: Ax + By = C
 
     Functions in this file:
     -----------------------
+    * solve
     * validate_input
     * after_compute_validation
     * to_string
-    * solve
+
 """
 import math
 import bcolors
