@@ -16,13 +16,15 @@ import bcolors
 
 
 class PointToLine:
-    @classmethod
+
     def __init__(self, point_a, point_b, decimal_point=3):
         self.point_a = point_a
         self.point_b = point_b
         self.decimal_point = decimal_point
+        self.__var_a = 0
+        self.__var_b = 0
+        self.__var_c = 0
 
-    @classmethod
     def validate_input(self) -> (bool, str):
         try:
             # Checks the inputs to if they are as expected
@@ -38,12 +40,11 @@ class PointToLine:
         else:
             return True, None
 
-    @staticmethod
-    def after_compute_validation(var_a, var_b) -> (bool, str):
+    def after_compute_validation(self) -> (bool, str):
         try:
-            assert math.isinf(var_a) is not True and math.isinf(
-                var_b) is not True
-            if var_a == 0 and var_b == 0:
+            assert math.isinf(self.__var_a) is not True and math.isinf(
+                self.__var_b) is not True
+            if self.__var_a == 0 and self.__var_b == 0:
                 raise ValueError
         except AssertionError as err:
             print(
@@ -59,38 +60,37 @@ class PointToLine:
         else:
             return True, None
 
-    @classmethod
-    def to_string(self, var_a, var_b, var_c) -> str:
-        if var_a == 0:
+    def to_string(self) -> str:
+        if self.__var_a == 0:
             output = (
-                f"{var_b:.{self.decimal_point}f} * Y "
-                f"= {var_c:.{self.decimal_point}f} with A = 0"
+                f"{self.__var_b:.{self.decimal_point}f} * Y "
+                f"= {self.__var_c:.{self.decimal_point}f} with A = 0"
             )
-        elif var_b == 0:
+        elif self.__var_b == 0:
             output = (
-                f"({var_a:.{self.decimal_point}f}) * X "
-                f"= {var_c:.{self.decimal_point}f} with B = 0"
+                f"({self.__var_a:.{self.decimal_point}f}) * X "
+                f"= {self.__var_c:.{self.decimal_point}f} with B = 0"
             )
         else:
             output = (
-                f"({var_a:.{self.decimal_point}f}) * X "
-                f"+ ({var_b:.{self.decimal_point}f}) * Y "
-                f"= {var_c:.{self.decimal_point}f}"
+                f"({self.__var_a:.{self.decimal_point}f}) * X "
+                f"+ ({self.__var_b:.{self.decimal_point}f}) * Y "
+                f"= {self.__var_c:.{self.decimal_point}f}"
             )
         return output
 
-    @classmethod
     def solve(self) -> (str, str):
         can_solve, error = self.validate_input()
         if can_solve and error is None:
-            var_a = self.point_a[1] - self.point_b[1]
-            var_b = self.point_b[0] - self.point_a[0]
-            var_c = var_b * self.point_a[1] + var_a * self.point_a[0]
+            self.__var_a = self.point_a[1] - self.point_b[1]
+            self.__var_b = self.point_b[0] - self.point_a[0]
+            self.__var_c = self.__var_b * self.point_a[1] + self.__var_a * \
+                           self.point_a[0]
         else:
             return None, error
-        can_output, error = self.after_compute_validation(var_a, var_b)
+        can_output, error = self.after_compute_validation()
         if can_output and error is None:
-            output = self.to_string(var_a, var_b, var_c)
+            output = self.to_string()
             return output, None
         else:
             return None, error
