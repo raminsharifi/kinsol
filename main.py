@@ -20,56 +20,61 @@ This is the runner file.
 import argparse
 import os
 import bcolors
-from point_to_line import point_to_line
+from point_line import PointToLine
 
-parser = argparse.ArgumentParser(description="Process some integers.")
-parser.add_argument(
-    "-a",
-    "--point_a",
-    nargs=2,
-    type=float,
-    help="Should be two values of type int/float. Seperated by space.",
-)
-parser.add_argument(
-    "-b",
-    "--point_b",
-    nargs=2,
-    type=float,
-    help="Should be two values of type int/float. Seperated by space.",
-)
-parser.add_argument(
-    "-d",
-    "--decimal_points",
-    default=3,
-    type=int,
-    help="Specifies the number of decimal points in output. "
-    "Should be greater or equal to zero."
-    "default value is 3.",
-)
-parser.add_argument(
-    "--save_to_csv",
-    dest="save",
-    action="store_true",
-    help="If used, will save the results into a CSV file. True by default.",
-)
-parser.add_argument(
-    "--no_save",
-    dest="save",
-    action="store_false",
-    help="Will not save the results to CSV. False by default.",
-)
-parser.set_defaults(save=True)
-args = parser.parse_args()
+
+def arguments():
+    parser = argparse.ArgumentParser(description="Process some integers.")
+    parser.add_argument(
+        "-a",
+        "--point_a",
+        nargs=2,
+        type=float,
+        help="Should be two values of type int/float. Seperated by space.",
+    )
+    parser.add_argument(
+        "-b",
+        "--point_b",
+        nargs=2,
+        type=float,
+        help="Should be two values of type int/float. Seperated by space.",
+    )
+    parser.add_argument(
+        "-d",
+        "--decimal_points",
+        default=3,
+        type=int,
+        help="Specifies the number of decimal points in output. "
+             "Should be greater or equal to zero."
+             "default value is 3.",
+    )
+    parser.add_argument(
+        "--save_to_csv",
+        dest="save",
+        action="store_true",
+        help="If used, will save the results into a CSV file.True by default.",
+    )
+    parser.add_argument(
+        "--no_save",
+        dest="save",
+        action="store_false",
+        help="Will not save the results to CSV. False by default.",
+    )
+    parser.set_defaults(save=True)
+    return parser.parse_args()
+
 
 if __name__ == "__main__":
     # Saving the input to local variables.
+    args = arguments()
     point_a = args.point_a
     point_b = args.point_b
     decimal_point = args.decimal_points
     save_to_file = args.save
 
     # Runs the function.
-    output, Error = point_to_line(point_a, point_b, decimal_point)
+    my_point_to_line = PointToLine(point_a, point_b, decimal_point)
+    output, Error = my_point_to_line.solve()
 
     # runs when there is no error detected.
     if output is not None:

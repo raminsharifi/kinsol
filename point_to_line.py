@@ -70,20 +70,20 @@ def point_to_line(point_a: list, point_b: list, decimal_point=3) -> (str, str):
         # output different strings based on different A, B.
         # Error would be returned as None
         if var_a == 0:
-            outline = (
+            output = (
                 f"{var_b:.{decimal_point}f} * Y "
                 f"= {var_c:.{decimal_point}f} with A = 0"
             )
         elif var_b == 0:
-            outline = (
+            output = (
                 f"({var_a:.{decimal_point}f}) * X "
                 f"= {var_c:.{decimal_point}f} with B = 0"
             )
         else:
-            outline = (
+            output = (
                 f"({var_a:.{decimal_point}f}) * X "
                 f"+ ({var_b:.{decimal_point}f}) * Y "
                 f"= {var_c:.{decimal_point}f}"
             )
 
-        return outline, None
+        return output, None

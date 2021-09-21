@@ -1,3 +1,9 @@
 X1, Y1, X2, Y2, decimal_point, line_output, Error
 1.0,1.0,1.0, 1.0, 3, None, Please input two different points!
 1.0,1.0,1.2, 3.4, 5, (-2.40000) * X + (0.20000) * Y = -2.20000, None
+1.0,1.0,1.2, 3.4, 5, (-2.40000) * X + (0.20000) * Y = -2.20000, None
+1.0,1.0,1.0, 1.0, 5, None, None
+1.0,1.0,1.0, 1.0, 5, None, Please input two different points!
+1.0,1.0,1.0, 5.0, 5, (-4.00000) * X = -4.00000 with B = 0, None
+1.0,1.0,1.0, 5.0, 3, (-4.000) * X = -4.000 with B = 0, None
+1.0,1.0,1.0, 5.0, 3, (-4.000) * X = -4.000 with B = 0, None
