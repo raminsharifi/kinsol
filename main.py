@@ -89,6 +89,13 @@ def save(saveFlag: bool):
     print(f"{bcolors.OKMSG}*********** Done! ***********{bcolors.ENDC}")
 
 
+def print_to_terminal(output):
+    if output is not None:
+        # runs when there is no error detected.
+        print(f"{bcolors.BOLD}*********** OUTPUT ***********{bcolors.ENDC}")
+        print(f"{bcolors.BITALIC}{output}{bcolors.ENDC}")
+
+
 if __name__ == "__main__":
     # Saving the input to local variables.
     args = arguments()
@@ -102,9 +109,6 @@ if __name__ == "__main__":
     output, Error = my_point_to_line.solve()
 
     # runs when there is no error detected.
-    if output is not None:
-        # runs when there is no error detected.
-        print(f"{bcolors.BOLD}*********** OUTPUT ***********{bcolors.ENDC}")
-        print(f"{bcolors.BITALIC}{output}{bcolors.ENDC}")
+    print_to_terminal(output)
 
     save(args.save)
