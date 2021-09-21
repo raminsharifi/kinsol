@@ -52,7 +52,7 @@ class PointToLine:
             # In the case of an error this will run.
             return None, self.__error
 
-    def validate_input(self) -> (bool, str):
+    def validate_input(self) -> (bool):
         """
         Checks to see if the inputs are of type list.
         They should be numbers with the length of two.
@@ -81,9 +81,9 @@ class PointToLine:
                 f"{bcolors.FAIL}*********** Error Detected ***********{bcolors.ENDC}")
             print("Input types Error!")
             self.__error = "Input types Error!"
-            return None
+            return False
         else:
-            return True, None
+            return True
 
     def after_compute_validation(self) -> (bool):
         """
