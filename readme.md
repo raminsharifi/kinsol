@@ -3,6 +3,7 @@
 This python program will get two distinct input and outputs the line which
 passes through these points. The points should be in *Cartesian* coordinates.
 The output will be a string in the following format: `A * X + B * Y = C`
+> Point To Line accepts both int and Float numbes.
 
 ## How to run this code:
 
@@ -11,7 +12,7 @@ The output will be a string in the following format: `A * X + B * Y = C`
 2. Install the required packages using: `pip install -r requirements.txt`
 3. You are all set. Keep in mind that this runs on Python 3.6+.
 4. You can try the code using the following flags with point A: [1, 1] and
-   point B: [2, 2] and three decimal points: 
+   point B: [2, 2] and three decimal points = 3:
 
 ```
 python main.py -a 1 1 -b 2 2 -d 3 --save_to_csv
@@ -20,7 +21,7 @@ python main.py -a 1 1 -b 2 2 -d 3 --save_to_csv
 OR
 
 ```
-python main.py --point_a 0.23 1 --point_b 2.55 2 --decimal_point 3 --no_save
+python main.py --point_a 1 1 --point_b 2 2 --decimal_point 3 --no_save
 ```
 
 ## pytest
