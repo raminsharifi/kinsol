@@ -16,20 +16,46 @@ import bcolors
 
 
 class PointToLine:
-
+    # Initialize values of the class
     def __init__(self, point_a, point_b, decimal_point=3):
         self.point_a = point_a
         self.point_b = point_b
         self.decimal_point = decimal_point
-        self.__var_a = 0
-        self.__var_b = 0
-        self.__var_c = 0
+        self.__var_a = None
+        self.__var_b = None
+        self.__var_c = None
+    
+    def solve(self) -> (str, str):
+        can_solve, error = self.validate_input()
+        if can_solve and error is None:
+            self.__var_a = self.point_a[1] - self.point_b[1]
+            self.__var_b = self.point_b[0] - self.point_a[0]
+            self.__var_c = self.__var_b * self.point_a[1] + self.__var_a * \
+                           self.point_a[0]
+        else:
+            return None, error
+        can_output, error = self.after_compute_validation()
+        if can_output and error is None:
+            output = self.to_string()
+            return output, None
+        else:
+            return None, error
 
     def validate_input(self) -> (bool, str):
         try:
             # Checks the inputs to if they are as expected
-            assert isinstance(self.point_a, list) and len(self.point_a) == 2
-            assert isinstance(self.point_b, list) and len(self.point_b) == 2
+            assert isinstance(self.point_a, list) and len(
+                self.point_a) == 2
+            assert isinstance(self.point_b, list) and len(
+                self.point_b) == 2
+            assert isinstance(self.point_a[0], int) or isinstance(
+                self.point_a[0], float)
+            assert isinstance(self.point_a[1], int) or isinstance(
+                self.point_a[1], float)
+            assert isinstance(self.point_b[0], int) or isinstance(
+                self.point_b[0], float)
+            assert isinstance(self.point_b[1], int) or isinstance(
+                self.point_b[1], float)
             assert isinstance(self.decimal_point,
                               int) and self.decimal_point >= 0
         except AssertionError:
@@ -78,19 +104,3 @@ class PointToLine:
                 f"= {self.__var_c:.{self.decimal_point}f}"
             )
         return output
-
-    def solve(self) -> (str, str):
-        can_solve, error = self.validate_input()
-        if can_solve and error is None:
-            self.__var_a = self.point_a[1] - self.point_b[1]
-            self.__var_b = self.point_b[0] - self.point_a[0]
-            self.__var_c = self.__var_b * self.point_a[1] + self.__var_a * \
-                           self.point_a[0]
-        else:
-            return None, error
-        can_output, error = self.after_compute_validation()
-        if can_output and error is None:
-            output = self.to_string()
-            return output, None
-        else:
-            return None, error
